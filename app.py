@@ -4,7 +4,7 @@ import time
 # Page config
 st.set_page_config(page_title="Happy Teachers' Day", page_icon="🌸", layout="centered")
 
-# CSS
+# CSS with more animations
 st.markdown(
     """
     <style>
@@ -21,11 +21,12 @@ st.markdown(
         animation: fadeIn 2s ease-in-out;
     }
     .header img {
-        border-radius: 12px;   /* square with rounded corners */
+        border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         width: 120px;
         height: auto;
-        object-fit: contain;   /* show full image */
+        object-fit: contain;
+        animation: float 3s ease-in-out infinite; /* floating effect */
     }
     .title {
         font-size: 48px;
@@ -55,7 +56,7 @@ st.markdown(
         margin: 20px 0;
         color: #2c3e50;
         font-weight: bold;
-        animation: fadeIn 1s ease-in-out;
+        animation: glow 1.5s ease-in-out infinite alternate; /* glowing effect */
     }
     .thanks {
         font-size: 22px;
@@ -63,7 +64,7 @@ st.markdown(
         color: #b8860b;
         margin-top: 30px;
         font-weight: bold;
-        animation: fadeInUp 3s ease-in-out;
+        animation: pulse 2s infinite; /* sparkle effect */
     }
     /* Central image styling */
     .center-image img {
@@ -72,27 +73,29 @@ st.markdown(
         margin-top: 20px;
         margin-bottom: 20px;
         width: 100%;
-        max-width: 700px;   /* keep it neat */
+        max-width: 700px;
         height: auto;
-        object-fit: contain;  /* no cropping */
+        object-fit: contain;
         display: block;
         margin-left: auto;
         margin-right: auto;
-        animation: fadeIn 2s ease-in-out;
+        animation: zoomIn 2s ease-in-out; /* zoom effect */
     }
     /* Animations */
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+    @keyframes fadeInUp { from {opacity: 0; transform: translateY(30px);} to {opacity: 1; transform: translateY(0);} }
+    @keyframes fadeInDown { from {opacity: 0; transform: translateY(-30px);} to {opacity: 1; transform: translateY(0);} }
+    @keyframes float { 0% { transform: translateY(0px);} 50% { transform: translateY(-10px);} 100% { transform: translateY(0px);} }
+    @keyframes glow {
+        from { text-shadow: 0 0 5px #e75480, 0 0 10px #ffb6c1; }
+        to { text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493; }
     }
-    @keyframes fadeInUp {
-        from {opacity: 0; transform: translateY(30px);}
-        to {opacity: 1; transform: translateY(0);}
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+        100% { transform: scale(1); opacity: 1; }
     }
-    @keyframes fadeInDown {
-        from {opacity: 0; transform: translateY(-30px);}
-        to {opacity: 1; transform: translateY(0);}
-    }
+    @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
     """,
     unsafe_allow_html=True
