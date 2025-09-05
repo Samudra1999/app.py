@@ -44,7 +44,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Card content
+# ✅ Correct usage of st.markdown (not st.code or st.write)
 st.markdown(
     """
     <div class="main">
