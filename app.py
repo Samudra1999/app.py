@@ -4,7 +4,7 @@ import time
 # Page config
 st.set_page_config(page_title="Happy Teachers' Day", page_icon="🌸", layout="centered")
 
-# CSS with extra animations
+# CSS with animations
 st.markdown(
     """
     <style>
@@ -29,15 +29,12 @@ st.markdown(
         animation: float 3s ease-in-out infinite;
     }
     .title {
-        font-size: 50px;
+        font-size: 48px;
         text-align: center;
+        color: #e75480;
         font-weight: bold;
         margin: 0;
-        background: linear-gradient(90deg, #ff0080, #ff8c00, #40e0d0, #8a2be2);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 300% 300%;
-        animation: rainbow 6s ease infinite, fadeInDown 2s ease-in-out;
+        animation: fadeInDown 2s ease-in-out;
     }
     .subtitle {
         font-size: 22px;
@@ -57,23 +54,21 @@ st.markdown(
         font-size: 28px;
         text-align: center;
         margin: 20px 0;
+        color: #2c3e50;
         font-weight: bold;
-        background: linear-gradient(90deg, #ff69b4, #ff1493, #ff69b4);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shimmer 2s infinite linear;
+        animation: glow 1.5s ease-in-out infinite alternate;
     }
     .thanks {
-        font-size: 24px;
+        font-size: 22px;
         text-align: center;
         color: #b8860b;
         margin-top: 30px;
         font-weight: bold;
-        animation: heartbeat 1.5s infinite;
+        animation: pulse 2s infinite;
     }
     .center-image img {
         border-radius: 20px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         margin-top: 20px;
         margin-bottom: 20px;
         width: 100%;
@@ -83,25 +78,21 @@ st.markdown(
         display: block;
         margin-left: auto;
         margin-right: auto;
-        animation: glowImg 3s ease-in-out infinite alternate, zoomIn 2s ease-in-out;
+        animation: zoomIn 2s ease-in-out;
     }
-
     /* Animations */
     @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
     @keyframes fadeInUp { from {opacity: 0; transform: translateY(30px);} to {opacity: 1; transform: translateY(0);} }
     @keyframes fadeInDown { from {opacity: 0; transform: translateY(-30px);} to {opacity: 1; transform: translateY(0);} }
     @keyframes float { 0% { transform: translateY(0px);} 50% { transform: translateY(-10px);} 100% { transform: translateY(0px);} }
-    @keyframes rainbow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-    @keyframes shimmer { 0% { background-position: -200px 0; } 100% { background-position: 200px 0; } }
-    @keyframes heartbeat {
-        0%, 100% { transform: scale(1); }
-        25% { transform: scale(1.1); }
-        50% { transform: scale(0.95); }
-        75% { transform: scale(1.05); }
+    @keyframes glow {
+        from { text-shadow: 0 0 5px #e75480, 0 0 10px #ffb6c1; }
+        to { text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493; }
     }
-    @keyframes glowImg {
-        from { box-shadow: 0 0 15px #ffb6c1, 0 0 30px #ff69b4; }
-        to { box-shadow: 0 0 25px #8a2be2, 0 0 50px #ff1493; }
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+        100% { transform: scale(1); opacity: 1; }
     }
     @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
@@ -126,7 +117,7 @@ st.markdown('<p class="quote">"A good teacher is like a candle — it consumes i
 
 st.divider()
 
-# Teacher slideshow (fade-in names with shimmer)
+# Teacher slideshow (fade-in names)
 teachers = [
     "🌟 Eeshani Ma’am",
     "🌟 Prateek Sir",
@@ -138,15 +129,17 @@ teachers = [
 
 placeholder = st.empty()
 
-for _ in range(5):  # longer loop
+for _ in range(3):  # loop cycles
     for teacher in teachers:
         placeholder.markdown(
             f"""
-            <p class="teacher-name">{teacher}</p>
+            <p class="teacher-name" style="animation: fadeInUp 1s ease-in-out;">
+                {teacher}
+            </p>
             """,
             unsafe_allow_html=True
         )
-        time.sleep(2)
+        time.sleep(2)  # each name stays for 2 seconds
 
 st.divider()
 
@@ -165,4 +158,3 @@ st.markdown('<p class="thanks">💐 Thank you for your guidance, patience, and w
 
 # Celebration
 st.balloons()
-st.snow()  # Confetti-like effect
