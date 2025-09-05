@@ -16,8 +16,8 @@ st.markdown(
         border-radius: 15px;
         box-shadow: 0 6px 15px rgba(0,0,0,0.25);
         width: 100%;
-        max-height: 250px;
-        object-fit: cover;
+        height: auto;
+        object-fit: contain;
         margin-bottom: 20px;
         animation: fadeIn 2s ease-in-out;
     }
@@ -64,6 +64,7 @@ st.markdown(
         margin-top: 20px;
         margin-bottom: 20px;
         width: 100%;
+        height: auto;
         animation: fadeIn 2s ease-in-out;
     }
     /* Animations */
@@ -84,7 +85,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Header Image
+# Header Image (full picture, no cropping)
 st.markdown(
     """
     <div class="header-image">
