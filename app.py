@@ -1,5 +1,4 @@
 import streamlit as st
-import time
 
 # Page config
 st.set_page_config(page_title="Happy Teachers' Day", page_icon="🌸", layout="centered")
@@ -9,52 +8,44 @@ st.markdown(
     """
     <style>
     body {
-        background: linear-gradient(135deg, #fffaf0, #e6f7ff);
-        font-family: 'Trebuchet MS', sans-serif;
+        background: linear-gradient(135deg, #ffffff, #f9f9ff);
+        font-family: 'Segoe UI', sans-serif;
     }
     .title {
-        font-size: 54px;
+        font-size: 48px;
         text-align: center;
-        color: #d6336c;
+        color: #2c3e50;
         font-weight: bold;
-        text-shadow: 2px 2px 8px #aaa;
+        margin-bottom: 10px;
     }
     .subtitle {
-        font-size: 22px;
+        font-size: 20px;
         text-align: center;
-        color: #333;
-        margin-bottom: 25px;
+        color: #555;
+        margin-bottom: 30px;
+    }
+    .teacher-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 12px;
+        margin: 8px 0;
+        background: #fff;
+        font-size: 20px;
+        text-align: center;
+        color: #2c3e50;
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
     }
     .quote {
-        font-size: 20px;
+        font-size: 18px;
         text-align: center;
         font-style: italic;
         margin: 25px 0;
-        color: #b8860b;
-    }
-    .teacher-box {
-        border: 2px solid #d4af37;
-        border-radius: 12px;
-        padding: 12px;
-        margin: 15px auto;
-        width: 60%;
-        text-align: center;
-        font-size: 26px;
-        font-weight: bold;
-        color: #2c3e50;
-        background: #fff;
-        box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
-        opacity: 0;
-        animation: fadeIn 1.5s forwards;
-    }
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
+        color: #555;
     }
     .thanks {
-        font-size: 22px;
+        font-size: 20px;
         text-align: center;
-        color: #b8860b;
+        color: #2c3e50;
         margin-top: 30px;
         font-weight: bold;
     }
@@ -65,34 +56,36 @@ st.markdown(
 
 # Title
 st.markdown('<p class="title">🌸 Happy Teachers\' Day 🌸</p>', unsafe_allow_html=True)
-st.markdown('<p class="subtitle">With love and respect to our amazing teachers at <b>Ivy Professional School</b></p>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle">With gratitude and respect to our mentors at <b>Ivy Professional School</b></p>', unsafe_allow_html=True)
 
 # Quote
-st.markdown('<p class="quote">"A good teacher is like a candle — it consumes itself to light the way for others." ✨</p>', unsafe_allow_html=True)
+st.markdown('<p class="quote">"A teacher takes a hand, opens a mind, and touches a heart." ✨</p>', unsafe_allow_html=True)
 
 st.divider()
 
-# Teacher names with fade-in effect
+# Teachers list in neat cards
 teachers = [
     "🌟 Eeshani Ma’am",
     "🌟 Prateek Sir",
     "🌟 Nawid Sir",
     "🌟 Sonali Ma’am",
     "🌟 Drishti Ma’am",
-    "🌟 and all other wonderful teachers at Ivy Professional School"
+    "🌟 and all the other wonderful teachers of Ivy Professional School"
 ]
 
 for teacher in teachers:
-    st.markdown(f'<div class="teacher-box">{teacher}</div>', unsafe_allow_html=True)
-    time.sleep(1.2)
+    st.markdown(f'<div class="teacher-card">{teacher}</div>', unsafe_allow_html=True)
 
 st.divider()
 
 # Central Image
-st.image("https://img.freepik.com/free-photo/top-view-roses-flowers-arrangement_23-2148931045.jpg", use_container_width=True)
+st.image(
+    "https://img.freepik.com/free-vector/flat-design-teachers-day-background_23-2149694130.jpg",
+    use_container_width=True
+)
 
-# Thank you note
-st.markdown('<p class="thanks">💐 Thank you for your guidance, patience, and wisdom! <br> We are forever grateful to you, dear teachers! 💖🎊</p>', unsafe_allow_html=True)
+# Thank-you note
+st.markdown('<p class="thanks">💐 Thank you for your guidance, patience, and wisdom. <br> We are truly grateful to you, dear teachers. 💖</p>', unsafe_allow_html=True)
 
-# Celebration
+# Subtle celebration
 st.balloons()
