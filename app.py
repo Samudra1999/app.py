@@ -55,6 +55,7 @@ st.markdown(
         margin: 20px 0;
         color: #2c3e50;
         font-weight: bold;
+        animation: fadeIn 1s ease-in-out;
     }
     .thanks {
         font-size: 22px;
@@ -64,7 +65,6 @@ st.markdown(
         font-weight: bold;
         animation: fadeInUp 3s ease-in-out;
     }
-    /* Central image styling */
     .center-image img {
         border-radius: 20px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.3);
@@ -74,7 +74,6 @@ st.markdown(
         height: auto;
         animation: fadeIn 2s ease-in-out;
     }
-    /* Animations */
     @keyframes fadeIn {
         from {opacity: 0;}
         to {opacity: 1;}
@@ -111,7 +110,7 @@ st.markdown('<p class="quote">"A good teacher is like a candle — it consumes i
 
 st.divider()
 
-# Teacher slideshow (one by one)
+# Teacher slideshow (continuous loop)
 teachers = [
     "🌟 Eeshani Ma’am",
     "🌟 Prateek Sir",
@@ -122,13 +121,16 @@ teachers = [
 ]
 
 placeholder = st.empty()
-for teacher in teachers:
-    placeholder.markdown(f'<p class="teacher-name">{teacher}</p>', unsafe_allow_html=True)
-    time.sleep(1.5)
+
+# Continuous loop (names keep changing)
+while True:
+    for teacher in teachers:
+        placeholder.markdown(f'<p class="teacher-name">{teacher}</p>', unsafe_allow_html=True)
+        time.sleep(1.5)
 
 st.divider()
 
-# Central image with frame and animation
+# Central image
 st.markdown(
     """
     <div class="center-image">
