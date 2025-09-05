@@ -12,6 +12,15 @@ st.markdown(
         background: linear-gradient(135deg, #fff0f5, #e6f7ff);
         font-family: 'Trebuchet MS', sans-serif;
     }
+    .header-image img {
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        margin-bottom: 20px;
+        animation: fadeIn 2s ease-in-out;
+    }
     .title {
         font-size: 52px;
         text-align: center;
@@ -48,7 +57,7 @@ st.markdown(
         font-weight: bold;
         animation: fadeInUp 3s ease-in-out;
     }
-    /* Image styling */
+    /* Central image styling */
     .center-image img {
         border-radius: 20px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.3);
@@ -71,6 +80,16 @@ st.markdown(
         to {opacity: 1; transform: translateY(0);}
     }
     </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Header Image
+st.markdown(
+    """
+    <div class="header-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgL3d58H6NKqxPg06OCN9k_RgI6pCwlQ43tg&s" />
+    </div>
     """,
     unsafe_allow_html=True
 )
