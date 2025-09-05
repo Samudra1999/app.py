@@ -117,7 +117,7 @@ st.markdown('<p class="quote">"A good teacher is like a candle — it consumes i
 
 st.divider()
 
-# Teacher slideshow (fade-in names)
+# Teacher slideshow (typewriter effect)
 teachers = [
     "🌟 Eeshani Ma’am",
     "🌟 Prateek Sir",
@@ -129,17 +129,14 @@ teachers = [
 
 placeholder = st.empty()
 
-for _ in range(3):  # loop cycles
+for _ in range(2):  # repeat cycle twice
     for teacher in teachers:
-        placeholder.markdown(
-            f"""
-            <p class="teacher-name" style="animation: fadeInUp 1s ease-in-out;">
-                {teacher}
-            </p>
-            """,
-            unsafe_allow_html=True
-        )
-        time.sleep(2)  # each name stays for 2 seconds
+        text = ""
+        for char in teacher:
+            text += char
+            placeholder.markdown(f"<p class='teacher-name'>{text}</p>", unsafe_allow_html=True)
+            time.sleep(0.05)  # typing speed
+        time.sleep(1)  # pause before next name
 
 st.divider()
 
