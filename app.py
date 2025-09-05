@@ -21,11 +21,11 @@ st.markdown(
         animation: fadeIn 2s ease-in-out;
     }
     .header img {
-        border-radius: 50%;
+        border-radius: 12px;   /* square with rounded corners */
         box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
+        width: 120px;
+        height: auto;
+        object-fit: contain;   /* show full image */
     }
     .title {
         font-size: 48px;
@@ -65,15 +65,22 @@ st.markdown(
         font-weight: bold;
         animation: fadeInUp 3s ease-in-out;
     }
+    /* Central image styling */
     .center-image img {
         border-radius: 20px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         margin-top: 20px;
         margin-bottom: 20px;
         width: 100%;
+        max-width: 700px;   /* keep it neat */
         height: auto;
+        object-fit: contain;  /* no cropping */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
         animation: fadeIn 2s ease-in-out;
     }
+    /* Animations */
     @keyframes fadeIn {
         from {opacity: 0;}
         to {opacity: 1;}
@@ -122,15 +129,15 @@ teachers = [
 
 placeholder = st.empty()
 
-# Continuous loop (names keep changing)
-while True:
+# Looping names
+for _ in range(3):   # change to while True for infinite loop
     for teacher in teachers:
         placeholder.markdown(f'<p class="teacher-name">{teacher}</p>', unsafe_allow_html=True)
         time.sleep(1.5)
 
 st.divider()
 
-# Central image
+# Central image with frame and animation
 st.markdown(
     """
     <div class="center-image">
