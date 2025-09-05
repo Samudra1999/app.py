@@ -124,7 +124,7 @@ teachers = [
     "🌟 Nawid Sir",
     "🌟 Sonali Ma’am",
     "🌟 Drishti Ma’am",
-    "🌟 and all other wonderful teachers at Ivy Professional School"
+    "🌟 And all other wonderful teachers at Ivy Professional School"
 ]
 
 placeholder = st.empty()
