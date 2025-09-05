@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 # Page config
 st.set_page_config(page_title="Happy Teachers' Day", page_icon="🌸", layout="centered")
@@ -12,28 +13,40 @@ st.markdown(
         font-family: 'Segoe UI', sans-serif;
     }
     .title {
-        font-size: 48px;
+        font-size: 52px;
         text-align: center;
-        color: #2c3e50;
         font-weight: bold;
-        margin-bottom: 10px;
+        background: linear-gradient(90deg, #ff6a88, #fbc2eb, #a1c4fd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 6s linear infinite;
+    }
+    @keyframes shine {
+        0% {background-position: 0%;}
+        100% {background-position: 200%;}
     }
     .subtitle {
         font-size: 20px;
         text-align: center;
-        color: #555;
+        color: #444;
         margin-bottom: 30px;
     }
     .teacher-card {
         border: 1px solid #ddd;
-        border-radius: 10px;
+        border-radius: 12px;
         padding: 12px;
-        margin: 8px 0;
+        margin: 10px auto;
         background: #fff;
         font-size: 20px;
         text-align: center;
         color: #2c3e50;
-        box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+        opacity: 0;
+        animation: fadeIn 1.5s forwards;
+    }
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(15px);}
+        to {opacity: 1; transform: translateY(0);}
     }
     .quote {
         font-size: 18px;
@@ -45,7 +58,7 @@ st.markdown(
     .thanks {
         font-size: 20px;
         text-align: center;
-        color: #2c3e50;
+        color: #b8860b;
         margin-top: 30px;
         font-weight: bold;
     }
@@ -63,7 +76,7 @@ st.markdown('<p class="quote">"A teacher takes a hand, opens a mind, and touches
 
 st.divider()
 
-# Teachers list in neat cards
+# Teachers list with fade-in animation
 teachers = [
     "🌟 Eeshani Ma’am",
     "🌟 Prateek Sir",
@@ -75,6 +88,7 @@ teachers = [
 
 for teacher in teachers:
     st.markdown(f'<div class="teacher-card">{teacher}</div>', unsafe_allow_html=True)
+    time.sleep(0.6)  # delay for fade-in effect
 
 st.divider()
 
@@ -85,7 +99,8 @@ st.image(
 )
 
 # Thank-you note
-st.markdown('<p class="thanks">💐 Thank you for your guidance, patience, and wisdom. <br> We are truly grateful to you, dear teachers. 💖</p>', unsafe_allow_html=True)
+st.markdown('<p class="thanks">💐 Thank you for your guidance, patience, and wisdom.<br> We are truly grateful to you, dear teachers. 💖</p>', unsafe_allow_html=True)
 
 # Subtle celebration
 st.balloons()
+st.markdown("🎉🎊✨🎉🎊✨🎉🎊✨", unsafe_allow_html=True)
