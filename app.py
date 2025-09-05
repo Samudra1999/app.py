@@ -1,74 +1,56 @@
 import streamlit as st
 import time
-import itertools
 
 # Page config
-st.set_page_config(page_title="Happy Teachers' Day", page_icon="🌸", layout="wide")
+st.set_page_config(page_title="Happy Teachers' Day", page_icon="🌸", layout="centered")
 
-# Custom CSS
+# CSS
 st.markdown(
     """
     <style>
     body {
-        background: linear-gradient(-45deg, #ffdee9, #b5fffc, #ffe6f7, #d4fc79);
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
+        background: linear-gradient(135deg, #fff0f5, #e6f7ff);
         font-family: 'Trebuchet MS', sans-serif;
     }
-    @keyframes gradient {
-        0% {background-position: 0% 50%;}
-        50% {background-position: 100% 50%;}
-        100% {background-position: 0% 50%;}
-    }
     .title {
-        font-size: 55px;
+        font-size: 52px;
         text-align: center;
-        color: #ff4c61;
+        color: #e75480;
         font-weight: bold;
-        text-shadow: 2px 2px 8px #888;
     }
     .subtitle {
         font-size: 22px;
         text-align: center;
-        color: #222;
-        margin-bottom: 20px;
-    }
-    .teacher-card {
-        background: white;
-        padding: 20px;
-        margin: 10px;
-        border-radius: 15px;
-        text-align: center;
-        font-size: 22px;
-        font-weight: bold;
-        box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .teacher-card:hover {
-        transform: scale(1.05);
-        box-shadow: 0px 6px 20px rgba(0,0,0,0.3);
+        color: #444;
     }
     .quote {
         font-size: 20px;
         text-align: center;
         font-style: italic;
         margin: 25px 0;
-        color: #333;
+        color: #b8860b;
+    }
+    .teacher-name {
+        font-size: 28px;
+        text-align: center;
+        margin: 20px 0;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    .thanks {
+        font-size: 22px;
+        text-align: center;
+        color: #b8860b;
+        margin-top: 30px;
+        font-weight: bold;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Typing effect for Title
-title_text = "🌸 Happy Teachers' Day 🌸"
-placeholder = st.empty()
-typed_text = ""
-for char in title_text:
-    typed_text += char
-    placeholder.markdown(f'<p class="title">{typed_text}</p>', unsafe_allow_html=True)
-    time.sleep(0.05)
-
+# Title
+st.markdown('<p class="title">🌸 Happy Teachers\' Day 🌸</p>', unsafe_allow_html=True)
 st.markdown('<p class="subtitle">With love and respect to our amazing teachers at <b>Ivy Professional School</b></p>', unsafe_allow_html=True)
 
 # Quote
@@ -76,31 +58,28 @@ st.markdown('<p class="quote">"A good teacher is like a candle — it consumes i
 
 st.divider()
 
-# Teachers list as glowing cards
-teachers = ["🌟 Eeshani Ma’am", "🌟 Prateek Sir", "🌟 Nawid Sir", "🌟 Sonali Ma’am", "🌟 Drishti Ma’am", "🌟 and all other wonderful teachers at Ivy Professional School"]
+# Teacher slideshow (one by one)
+teachers = [
+    "🌟 Eeshani Ma’am",
+    "🌟 Prateek Sir",
+    "🌟 Nawid Sir",
+    "🌟 Sonali Ma’am",
+    "🌟 Drishti Ma’am",
+    "🌟 and all other wonderful teachers at Ivy Professional School"
+]
 
-cols = st.columns(3)
-for idx, teacher in enumerate(teachers):
-    with cols[idx % 3]:
-        st.markdown(f'<div class="teacher-card">{teacher}</div>', unsafe_allow_html=True)
+placeholder = st.empty()
+for teacher in teachers:
+    placeholder.markdown(f'<p class="teacher-name">{teacher}</p>', unsafe_allow_html=True)
+    time.sleep(1.5)
 
 st.divider()
 
-# Image carousel simulation
-images = [
-    "https://img.freepik.com/free-vector/happy-teacher-s-day-background_23-2149057072.jpg",
-    "https://img.freepik.com/free-photo/top-view-roses-flowers-arrangement_23-2148931045.jpg",
-    "https://img.freepik.com/free-vector/hand-drawn-flat-design-teachers-day-background_23-2149694125.jpg"
-]
+# Central image
+st.image("https://img.freepik.com/free-vector/happy-teacher-s-day-background_23-2149057072.jpg", use_container_width=True)
 
-st.markdown("### 🌼 A small token of love 🌼")
-img_placeholder = st.empty()
-for i in itertools.cycle(images):
-    img_placeholder.image(i, use_container_width=True)
-    time.sleep(2)  # change image every 2 seconds
+# Thank you note
+st.markdown('<p class="thanks">💐 Thank you for your guidance, patience, and wisdom! We are forever grateful to you, dear teachers! 💖</p>', unsafe_allow_html=True)
 
 # Celebration
-st.success("💐 Thank you for your guidance, patience, and wisdom! We are forever grateful to you, dear teachers! 💖")
 st.balloons()
-time.sleep(1.5)
-st.snow()
