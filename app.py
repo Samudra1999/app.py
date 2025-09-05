@@ -17,11 +17,13 @@ st.markdown(
         text-align: center;
         color: #e75480;
         font-weight: bold;
+        animation: fadeInDown 2s ease-in-out;
     }
     .subtitle {
         font-size: 22px;
         text-align: center;
         color: #444;
+        animation: fadeIn 3s ease-in-out;
     }
     .quote {
         font-size: 20px;
@@ -29,6 +31,7 @@ st.markdown(
         font-style: italic;
         margin: 25px 0;
         color: #b8860b;
+        animation: fadeInUp 3s ease-in-out;
     }
     .teacher-name {
         font-size: 28px;
@@ -43,6 +46,29 @@ st.markdown(
         color: #b8860b;
         margin-top: 30px;
         font-weight: bold;
+        animation: fadeInUp 3s ease-in-out;
+    }
+    /* Image styling */
+    .center-image img {
+        border-radius: 20px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        animation: fadeIn 2s ease-in-out;
+    }
+    /* Animations */
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+    @keyframes fadeInUp {
+        from {opacity: 0; transform: translateY(30px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInDown {
+        from {opacity: 0; transform: translateY(-30px);}
+        to {opacity: 1; transform: translateY(0);}
     }
     </style>
     """,
@@ -75,8 +101,15 @@ for teacher in teachers:
 
 st.divider()
 
-# Central image
-st.image("https://img.freepik.com/free-vector/happy-teacher-s-day-background_23-2149057072.jpg", use_container_width=True)
+# Central image with frame and animation
+st.markdown(
+    """
+    <div class="center-image">
+        <img src="https://img.freepik.com/free-vector/happy-teachers-day_52683-44814.jpg?semt=ais_incoming&w=740&q=80" />
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # Thank you note
 st.markdown('<p class="thanks">💐 Thank you for your guidance, patience, and wisdom! We are forever grateful to you, dear teachers! 💖</p>', unsafe_allow_html=True)
