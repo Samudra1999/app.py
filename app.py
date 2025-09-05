@@ -4,106 +4,119 @@ import time
 # Page config
 st.set_page_config(page_title="Happy Teachers' Day", page_icon="🌸", layout="centered")
 
-# CSS Styling
+# Custom CSS
 st.markdown(
     """
     <style>
     body {
-        background: linear-gradient(135deg, #ffffff, #f7f9fc);
+        background: linear-gradient(120deg, #faf8f5, #fffdf8);
         font-family: 'Segoe UI', sans-serif;
+        color: #2c3e50;
+    }
+    .hero {
+        text-align: center;
+        margin-bottom: 25px;
     }
     .title {
-        font-size: 50px;
-        text-align: center;
-        color: #2c3e50;
+        font-size: 56px;
         font-weight: bold;
-        opacity: 0;
-        animation: fadeIn 2s forwards;
+        color: #2c3e50;
+        text-shadow: 1px 1px 6px rgba(0,0,0,0.15);
+        animation: fadeIn 2s ease-in-out;
     }
     .subtitle {
-        font-size: 20px;
-        text-align: center;
-        color: #444;
-        margin-bottom: 25px;
-        opacity: 0;
-        animation: fadeIn 3s forwards;
+        font-size: 22px;
+        margin-top: -10px;
+        color: #555;
+        animation: fadeIn 3s ease-in-out;
     }
-    .quote {
+    .quote-box {
         font-size: 18px;
-        text-align: center;
         font-style: italic;
-        margin: 25px 0;
         color: #b8860b;
+        text-align: center;
+        margin: 25px auto;
+        width: 70%;
+        animation: fadeIn 2.5s ease-in-out;
     }
     .teacher-card {
         border: 2px solid #d4af37;
         border-radius: 12px;
         padding: 18px;
-        margin: 20px auto;
-        width: 60%;
+        margin: 15px auto;
+        width: 65%;
         background: #fff;
         font-size: 26px;
         text-align: center;
-        color: #2c3e50;
         font-weight: bold;
-        box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+        box-shadow: 0px 6px 18px rgba(0,0,0,0.12);
         opacity: 0;
         animation: fadeInCard 1.5s forwards;
+    }
+    .thanks {
+        font-size: 20px;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 35px;
+        font-weight: bold;
+        animation: fadeIn 2.5s ease-in-out;
     }
     @keyframes fadeIn {
         from {opacity: 0;}
         to {opacity: 1;}
     }
     @keyframes fadeInCard {
-        from {opacity: 0; transform: translateY(15px);}
+        from {opacity: 0; transform: translateY(20px);}
         to {opacity: 1; transform: translateY(0);}
-    }
-    .thanks {
-        font-size: 20px;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 30px;
-        font-weight: bold;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
+# Hero Image
+st.markdown('<div class="hero"><img src="https://img.freepik.com/free-vector/flat-teachers-day-illustration_23-2149693083.jpg" width="600"></div>', unsafe_allow_html=True)
+
 # Title + subtitle
 st.markdown('<p class="title">🌸 Happy Teachers\' Day 🌸</p>', unsafe_allow_html=True)
 st.markdown('<p class="subtitle">With gratitude and respect to our mentors at <b>Ivy Professional School</b></p>', unsafe_allow_html=True)
 
-# Quote
-st.markdown('<p class="quote">"Teaching is the profession that creates all other professions." ✨</p>', unsafe_allow_html=True)
+# Dynamic quotes rotation
+quotes = [
+    "“A teacher takes a hand, opens a mind, and touches a heart.”",
+    "“Teaching is the profession that creates all other professions.”",
+    "“The influence of a good teacher can never be erased.”"
+]
+
+quote_placeholder = st.empty()
+for q in quotes:
+    quote_placeholder.markdown(f'<div class="quote-box">{q}</div>', unsafe_allow_html=True)
+    time.sleep(2.5)
 
 st.divider()
 
-# Teacher slideshow (spotlight one by one)
+# Teacher spotlight slideshow
 teachers = [
     "🌟 Eeshani Ma’am",
     "🌟 Prateek Sir",
     "🌟 Nawid Sir",
     "🌟 Sonali Ma’am",
     "🌟 Drishti Ma’am",
-    "🌟 and all the other wonderful teachers of Ivy Professional School"
+    "🌟 and all the wonderful teachers of Ivy Professional School"
 ]
 
 placeholder = st.empty()
 for teacher in teachers:
     placeholder.markdown(f'<div class="teacher-card">{teacher}</div>', unsafe_allow_html=True)
-    time.sleep(1.8)
+    time.sleep(2)
 
 st.divider()
-
-# Tribute Image
-st.image(
-    "https://img.freepik.com/free-vector/flat-design-teachers-day-background_23-2149694130.jpg",
-    use_container_width=True
-)
 
 # Thank-you note
 st.markdown('<p class="thanks">💐 Thank you for your wisdom, patience, and kindness.<br>We are forever grateful to you, dear teachers. 💖</p>', unsafe_allow_html=True)
 
-# Subtle balloons celebration
+# Celebration
+time.sleep(1.5)
 st.balloons()
+time.sleep(1)
+st.snow()
