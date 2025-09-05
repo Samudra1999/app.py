@@ -12,20 +12,27 @@ st.markdown(
         background: linear-gradient(135deg, #fff0f5, #e6f7ff);
         font-family: 'Trebuchet MS', sans-serif;
     }
-    .header-image img {
-        border-radius: 15px;
-        box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-        width: 100%;
-        height: auto;
-        object-fit: contain;
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
         margin-bottom: 20px;
         animation: fadeIn 2s ease-in-out;
     }
+    .header img {
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
     .title {
-        font-size: 52px;
+        font-size: 48px;
         text-align: center;
         color: #e75480;
         font-weight: bold;
+        margin: 0;
         animation: fadeInDown 2s ease-in-out;
     }
     .subtitle {
@@ -85,18 +92,18 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Header Image (full picture, no cropping)
+# Header (logo + title)
 st.markdown(
     """
-    <div class="header-image">
+    <div class="header">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgL3d58H6NKqxPg06OCN9k_RgI6pCwlQ43tg&s" />
+        <p class="title">🌸 Happy Teachers' Day 🌸</p>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# Title
-st.markdown('<p class="title">🌸 Happy Teachers\' Day 🌸</p>', unsafe_allow_html=True)
+# Subtitle
 st.markdown('<p class="subtitle">With love and respect to our amazing teachers at <b>Ivy Professional School</b></p>', unsafe_allow_html=True)
 
 # Quote
