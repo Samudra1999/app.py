@@ -4,7 +4,7 @@ import time
 # Page config
 st.set_page_config(page_title="Happy Teachers' Day", page_icon="🌸", layout="centered")
 
-# CSS with more animations
+# CSS with animations
 st.markdown(
     """
     <style>
@@ -26,7 +26,7 @@ st.markdown(
         width: 120px;
         height: auto;
         object-fit: contain;
-        animation: float 3s ease-in-out infinite; /* floating effect */
+        animation: float 3s ease-in-out infinite;
     }
     .title {
         font-size: 48px;
@@ -56,7 +56,7 @@ st.markdown(
         margin: 20px 0;
         color: #2c3e50;
         font-weight: bold;
-        animation: glow 1.5s ease-in-out infinite alternate; /* glowing effect */
+        animation: glow 1.5s ease-in-out infinite alternate;
     }
     .thanks {
         font-size: 22px;
@@ -64,9 +64,8 @@ st.markdown(
         color: #b8860b;
         margin-top: 30px;
         font-weight: bold;
-        animation: pulse 2s infinite; /* sparkle effect */
+        animation: pulse 2s infinite;
     }
-    /* Central image styling */
     .center-image img {
         border-radius: 20px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.3);
@@ -79,7 +78,7 @@ st.markdown(
         display: block;
         margin-left: auto;
         margin-right: auto;
-        animation: zoomIn 2s ease-in-out; /* zoom effect */
+        animation: zoomIn 2s ease-in-out;
     }
     /* Animations */
     @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
@@ -101,7 +100,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Header (logo + title)
+# Header
 st.markdown(
     """
     <div class="header">
@@ -112,15 +111,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Subtitle
+# Subtitle & Quote
 st.markdown('<p class="subtitle">With love and respect to our amazing teachers at <b>Ivy Professional School</b></p>', unsafe_allow_html=True)
-
-# Quote
 st.markdown('<p class="quote">"A good teacher is like a candle — it consumes itself to light the way for others." ✨</p>', unsafe_allow_html=True)
 
 st.divider()
 
-# Teacher slideshow (continuous loop)
+# Teacher slideshow (typewriter effect)
 teachers = [
     "🌟 Eeshani Ma’am",
     "🌟 Prateek Sir",
@@ -132,15 +129,18 @@ teachers = [
 
 placeholder = st.empty()
 
-# Looping names
-for _ in range(3):   # change to while True for infinite loop
+for _ in range(2):  # repeat cycle twice
     for teacher in teachers:
-        placeholder.markdown(f'<p class="teacher-name">{teacher}</p>', unsafe_allow_html=True)
-        time.sleep(1.5)
+        text = ""
+        for char in teacher:
+            text += char
+            placeholder.markdown(f"<p class='teacher-name'>{text}</p>", unsafe_allow_html=True)
+            time.sleep(0.05)  # typing speed
+        time.sleep(1)  # pause before next name
 
 st.divider()
 
-# Central image with frame and animation
+# Central Image
 st.markdown(
     """
     <div class="center-image">
